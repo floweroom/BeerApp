@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            toolStripContainer1 = new ToolStripContainer();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             button3 = new Button();
-            button5 = new Button();
             button4 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -39,6 +42,8 @@
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
+            toolStripContainer1 = new ToolStripContainer();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.SuspendLayout();
@@ -46,59 +51,59 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 74);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
+            dataGridView1.Location = new Point(0, 85);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(519, 120);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // toolStripContainer1
+            // Column1
             // 
+            Column1.HeaderText = "Фамилия";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
             // 
-            // toolStripContainer1.ContentPanel
+            // Column2
             // 
-            toolStripContainer1.ContentPanel.Controls.Add(button3);
-            toolStripContainer1.ContentPanel.Controls.Add(button5);
-            toolStripContainer1.ContentPanel.Controls.Add(button4);
-            toolStripContainer1.ContentPanel.Controls.Add(button2);
-            toolStripContainer1.ContentPanel.Controls.Add(button1);
-            toolStripContainer1.ContentPanel.Controls.Add(dataGridView1);
-            toolStripContainer1.ContentPanel.Size = new Size(519, 194);
-            toolStripContainer1.ContentPanel.Load += toolStripContainer1_ContentPanel_Load;
-            toolStripContainer1.Location = new Point(165, 94);
-            toolStripContainer1.Name = "toolStripContainer1";
-            toolStripContainer1.Size = new Size(519, 219);
-            toolStripContainer1.TabIndex = 1;
-            toolStripContainer1.Text = "toolStripContainer1";
+            Column2.HeaderText = "Имя";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
             // 
-            // toolStripContainer1.TopToolStripPanel
+            // Column3
             // 
-            toolStripContainer1.TopToolStripPanel.Click += toolStripContainer1_TopToolStripPanel_Click;
+            Column3.HeaderText = "Отчество";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Статус";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Дата";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
             // 
             // button3
             // 
-            button3.Location = new Point(180, 0);
+            button3.Location = new Point(261, 0);
             button3.Name = "button3";
             button3.Size = new Size(144, 29);
             button3.TabIndex = 6;
             button3.Text = "Согласование";
             button3.UseVisualStyleBackColor = true;
             // 
-            // button5
-            // 
-            button5.Location = new Point(36, 39);
-            button5.Name = "button5";
-            button5.Size = new Size(94, 29);
-            button5.TabIndex = 5;
-            button5.Text = "Подобрать";
-            button5.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            button4.Location = new Point(320, 0);
+            button4.Location = new Point(401, 0);
             button4.Name = "button4";
             button4.Size = new Size(118, 29);
             button4.TabIndex = 4;
@@ -107,7 +112,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(91, 0);
+            button2.Location = new Point(170, 0);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 2;
@@ -116,7 +121,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(0, 0);
+            button1.Location = new Point(79, 0);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
@@ -125,7 +130,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(91, 37);
+            button6.Location = new Point(125, 37);
             button6.Name = "button6";
             button6.Size = new Size(94, 29);
             button6.TabIndex = 2;
@@ -143,7 +148,7 @@
             // 
             // button8
             // 
-            button8.Location = new Point(407, 37);
+            button8.Location = new Point(370, 37);
             button8.Name = "button8";
             button8.Size = new Size(182, 29);
             button8.TabIndex = 4;
@@ -153,12 +158,38 @@
             // button9
             // 
             button9.BackColor = Color.Tomato;
-            button9.Location = new Point(545, 349);
+            button9.Location = new Point(580, 387);
             button9.Name = "button9";
             button9.Size = new Size(139, 29);
             button9.TabIndex = 5;
             button9.Text = "Согласовать";
             button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            toolStripContainer1.ContentPanel.Controls.Add(dateTimePicker1);
+            toolStripContainer1.ContentPanel.Controls.Add(dataGridView1);
+            toolStripContainer1.ContentPanel.Controls.Add(button4);
+            toolStripContainer1.ContentPanel.Controls.Add(button3);
+            toolStripContainer1.ContentPanel.Controls.Add(button2);
+            toolStripContainer1.ContentPanel.Controls.Add(button1);
+            toolStripContainer1.ContentPanel.Size = new Size(519, 194);
+            toolStripContainer1.Location = new Point(125, 142);
+            toolStripContainer1.Name = "toolStripContainer1";
+            toolStripContainer1.Size = new Size(519, 219);
+            toolStripContainer1.TabIndex = 7;
+            toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(269, 35);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(250, 27);
+            dateTimePicker1.TabIndex = 8;
             // 
             // Supliers
             // 
@@ -166,11 +197,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Linen;
             ClientSize = new Size(800, 450);
+            Controls.Add(toolStripContainer1);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
-            Controls.Add(toolStripContainer1);
             Name = "Supliers";
             Text = "Supliers";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -183,9 +214,7 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private ToolStripContainer toolStripContainer1;
         private Button button1;
-        private Button button5;
         private Button button4;
         private Button button2;
         private Button button6;
@@ -193,5 +222,12 @@
         private Button button8;
         private Button button9;
         private Button button3;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private ToolStripContainer toolStripContainer1;
+        private DateTimePicker dateTimePicker1;
     }
 }
