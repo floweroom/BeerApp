@@ -78,14 +78,14 @@ namespace Beer
 
 
 
-            
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             //DataTable table = new DataTable();
             //dataGridView1.DataSource = table;
-            for (int i = 0; dataGridView1.Columns.; i++ )
+            for (int i = 0; i< dataGridView1.Rows.Count; i++)
             {
 
             }
