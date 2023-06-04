@@ -25,8 +25,7 @@ namespace Beer
             InitializeComponent();
 
 
-            var Builder = new DbContextOptionsBuilder<DbBeerApp>();
-            Builder.UseSqlServer("Server=(localDB)\\MSSQLLOCALDB;DATABASE=SupliersDB");
+
 
 
             var options = new DbContextOptionsBuilder<DbBeerApp>()
@@ -81,15 +80,29 @@ namespace Beer
 
             using (var Db = new DbBeerApp(options))
             {
-                foreach (DataGridViewCell dgc in dataGridView1.SelectedCells)
+                Db.Database.EnsureCreated();
+                foreach (DataGridViewRow dataRow in dataGridView1.Rows)
                 {
-                    string cellValue = dgc.Value.ToString();
+                    var surname = dataRow.Cells[0].Value;
+                    var name = dataRow.Cells[1].Value;
+                    var pat = dataRow.Cells[2].Value;
+                    var status = dataRow.Cells[3].Value;
+                    var date = dataRow.Cells[4].Value;
 
-                    Db.Objs.Add(cellValue);
+                    Agreement agreement = new Agreement()
+                    {
+                        Surname = surname.ToString(),
+                        Name = name.ToString(),
+                        Patronimic = pat.ToString(),
+                        Status = status.ToString(),
+                        Date = date.ToString()
+                    };
+                    Db.Objs.Add(agreement);
 
 
                     //LoadTable(tableName);
                 }
+                Db.SaveChanges();
             }
         }
 

@@ -164,7 +164,7 @@
             button9.TabIndex = 5;
             button9.Text = "Согласовать";
             button9.UseVisualStyleBackColor = false;
-            button9.Click += button9_Click;
+           
             // 
             // toolStripContainer1
             // 

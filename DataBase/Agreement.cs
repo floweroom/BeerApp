@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Beer.DataBase
 {
-    internal class Agreement
+    public class Agreement
     {
+        public int Id { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
 
