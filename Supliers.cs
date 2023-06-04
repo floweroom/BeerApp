@@ -1,5 +1,6 @@
 ﻿using Beer.DataBase;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace Beer
 
     public partial class Supliers : Form
     {
-        DbBeerApp Db;
+        //DbBeerApp Db;
         public Supliers()
         {
 
@@ -32,9 +33,12 @@ namespace Beer
                 .UseSqlServer("Server=(localDB)\\MSSQLLOCALDB;DATABASE=SupliersDB")
                 .Options;
 
-            Db = new DbBeerApp(options);
-            Db.Objs.Load();
-            dataGridView1.DataSource = Db.Objs.Local.ToBindingList();
+
+
+
+
+            //Db.Objs.Load();
+            //dataGridView1.DataSource = Db.Objs.Local.ToBindingList();
 
 
             dataGridView1.AllowUserToAddRows = false;
@@ -75,28 +79,49 @@ namespace Beer
             dataGridView1.Rows.Add(row);
             dataGridView1.Rows.Add(row1);
 
-
-
-
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            //DataTable table = new DataTable();
-            //dataGridView1.DataSource = table;
-            for (int i = 0; i< dataGridView1.Rows.Count; i++)
+            using (var Db = new DbBeerApp(options))
             {
+                foreach (DataGridViewCell dgc in dataGridView1.SelectedCells)
+                {
+                    string cellValue = dgc.Value.ToString();
 
+                    Db.Objs.Add(cellValue);
+
+
+                    //LoadTable(tableName);
+                }
             }
-            Db.Objs.Add(table);
-            Db.SaveChanges();
-            //dataGridView1.Refresh(); // обновляем грид
-
         }
+
+
+
     }
 
+    //private void button9_Click(object sender, EventArgs e)
+    //{
+    //    //DataTable table = new DataTable();
+    //    //dataGridView1.DataSource = table;
+    //    Agreement agreement = new Agreement()
+    //    {
+    //        Surname = dataGridView1.Column1
+    //        Name =
+    //        Patronimic =
+    //        Status =
+    //        Date =
+    //    };
+
+    //    for (int i = 0; i< dataGridView1.Rows.Count; i++)
+    //    {
+    //        Db.Objs.Add();
+    //    }
+
+    //    Db.SaveChanges();
+    //    //dataGridView1.Refresh(); // обновляем грид
+
+    //}
 }
+
+
 
 
 
