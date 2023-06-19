@@ -61,6 +61,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(519, 120);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
@@ -164,7 +165,7 @@
             button9.TabIndex = 5;
             button9.Text = "Согласовать";
             button9.UseVisualStyleBackColor = false;
-           
+            button9.Click += button9_Click;
             // 
             // toolStripContainer1
             // 
